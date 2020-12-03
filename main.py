@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+WAIT_TIME = '20'
+
 nama = 'Ramadhan Adi Putra'
 nik = '61180071'
 
@@ -26,7 +28,7 @@ driver.find_element_by_xpath('//*[@id="mG61Hd"]/div[2]/div/div[2]/div[9]/div/div
 driver.find_element_by_xpath('//*[@id="i102"]/div[3]/div').click()
 driver.find_element_by_xpath('//*[@id="i113"]/div[2]').click()
 driver.find_element_by_xpath('//*[@id="i136"]/div[2]').click()
-#driver.find_element_by_xpath('//*[@id="i152"]/div[3]/div').click()
+#driver.find_element_by_xpath('//*[@id="i152"]/div[3]/div').click() #WFO: work from onsite
 driver.find_element_by_xpath('//*[@id="i164"]/div[3]/div').click() #off/weekend/holiday
 driver.find_element_by_xpath('//*[@id="i189"]/div[3]/div').click()
 driver.find_element_by_xpath('//*[@id="i202"]/div[3]/div').click()
@@ -36,8 +38,14 @@ driver.find_element_by_xpath('//*[@id="i229"]/div[3]/div').click()
 driver.find_element_by_xpath('//*[@id="i257"]/div[3]/div').click()
 driver.find_element_by_xpath('//*[@id="i267"]/div[3]/div').click()
 driver.find_element_by_xpath('//*[@id="i274"]/div[3]/div').click()
-driver.find_element_by_xpath('//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div/div/span').click()
+driver.find_element_by_xpath('//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div/div/span/span').click()
 
+element = WebDriverWait(driver, WAIT_TIME).until(
+    EC.element_to_be_clickable((By.CSS_SELECTOR, ".freebirdFormviewerViewResponseConfirmationMessage"), 'thank you.')
+)
+
+time.sleep(5)
+driver.quit()
 """
 from pyautogui import write
 option_number = 3 # Choose option number here
